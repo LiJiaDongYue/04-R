@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n#爬虫是一种利用代码（例如：R code或Python code）模拟浏览器访问（下载）页面并根据HTML结构筛选获取所需信息的一种工具\n#在R里面我们通常用Rcurl包实现前一半的功能（模拟浏览器访问页面），用XML包完成后一半功能（通过HTML树结构筛选提取信息）。\n#\n#1.模拟浏览器行为\n# 构造请求报头\ncust_header <-  c(`User-Agent` = \"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:26.0) Gecko/20100101 Firefox/26.0\", \n                Accept = \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\", \n                `Accept-Language` = \"en-us\", Connection = \"keep-alive\")\n#2.模拟访问\nlibrary(bitops)\nlibrary(RCurl)\nlibrary(XML)\n# 读取拉手深圳美食搜索\nstart_url <-  \"http://shenzhen.lashou.com/cate/meishi\"\n# 读取PageSouce\npagesource <- getURL(start_url, httpheader = cust_header, .encoding = \"utf-8\")\n\n#3.整理HTML结构\n# 使用XML中的htmlTreeParse函数解析刚才得到的webpage变量\npagetree <- htmlTreeParse(pagesource, encoding = \"GB2312\", error = function(...) {}, \n                          useInternalNodes = TRUE, trim = TRUE)# 注意encoding\n\n#4.定位节点\nnode<-getNodeSet(pagetree, \"//div[contains(@class,\"goods\")]//a[@class=\"goods-name\"]//text()\")\ngoods_name<-sapply(node,xmlValue) \n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1489408203183.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3589683791",
+    "id" : "C17FE85E",
+    "lastKnownWriteTime" : 1489458885,
+    "last_content_update" : 1489458885402,
+    "path" : "~/Public/02-R/01-Projects/Study20170313/简单爬虫.R",
+    "project_path" : "简单爬虫.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n#input from key\nmydata <- data.frame(a=numeric(),b=character());\n##1\nmydata <- edit(mydata)\n##2\nmydata <- fix(mydata)\n\n#grathic\npdf(\"result.pdf\")# save as pdf\nattach(mtcars)\nhead(mtcars)\nplot(wt,mpg)\nabline(lm(mpg~wt))\ntitle(\"Regression 0f MPG ON Weight\")\ndetach(mtcars)\ndev.off()\n\npar(no.readonly = T)#生成一个可以修改的当前图形参数列表\ndose <- c(20,30,40,50,60)\ndrugA <- c(16,20,27,40,60)\ndrugB <- c(15,18,25,31,40)\ndata.drug <- data.frame(dose=dose,drugA=drugA,drugB=drugB)\nopar <- par(no.readonly = T)\npar(pin=c(2,3))#size\npar(lwd=2,cex=1.5)\npar(cex.axis=.75,font.axis=3)#font\nlines(dose,drugB,type = \"b\",pch=17,lty=2,col=\"blue\")\nabline(h = c(30),lwd=1.5,lty=2,col=\"gray\")\nlibrary(Hmisc)\nminor.tick(nx=3,ny=3,tick.ratio=0.5)#添加次要刻度线\nlegend(\"topleft\",inset = 0.05,title = \"Drug TYpe\",c(\"A\",\"B\"),lty = c(1,2),pch = c(15,17),col = c(\"red\",\"blue\"))\n#par(xlab=\"dose\",ylab=\"druaB\")\nplot(data.drug$dose,data.drug$drugA,type = \"b\",pch=19,lty=2,col=\"red\")\nplot(data.drug$dose,data.drug$drugB,type = \"b\",xlab=\"dose\",ylab=\"druaB\",main = \"DOSE&DRUUB COMPARE\",\n     sub = \"author:Leal\", pch=23,lty=6,col=\"blue\",bg=\"green\")\npar(opar)\n\n#1=下,2=左,3=上,4=右\n#生成数据\nx <- c(1:10)\ny <- x\nz <- 10/x\nopar <- par(no.readonly = TRUE)\npar(mar=c(5,4,4,8)+0.01)#增加边界大小\nplot(x,y,type = \"b\",pch=21,col=\"red\",yaxt=\"n\",lty=3,ann = FALSE)#绘制 x 对 y 的图形\nlines(x,z,type = \"b\",pch=22,col=\"blue\",lty=2)#添加 x 对1/ x 的直线\n#绘制你自己的坐标轴\naxis(2,at = x,labels = x,col.axis=\"red\",las=2)\naxis(4,at = z,labels = round(z,digits = 2),col.axis=\"blue\",las=2,cex.axis=0.7,tick = -.01)\nmtext(\"y=1/x\",side = 4,line = 3,cex.lab=1,las=2,col = \"blue\")#添加标题和文本\ntitle(\"An example\",xlab = \"x values\",ylab = \"y=x\")\npar(opar)\n\n#text&mtext\nattach(mtcars)\nplot(wt,mpg,main = \"Milege vs Car.Weight\",xlab = \"Weight\",ylab = \"Milege\",pch=18,col=\"blue\")\ntext(wt,mpg,row.names(mtcars),cex = 0.6,pos = 4,col = \"red\")\ndetach(mtcars)\n\n#函数 par() 或 layout() 可以容易地组合多幅图形\nattach(mtcars)\nopar <- par(no.readonly = TRUE)\npar(mfrow=c(2,2))\nplot(wt,mpg,main = \"wt~mpg\")\nplot(wt,disp,main = \"wt~disp\")\nhist(wt,main = \"hist of wt\")\nboxplot(wt,main=\"boxplot oc wt\")\npar(opar)\ndetach(mtcars)\n\n#way 2\n#widths = 各列宽度值组成的一个向量\n#heights = 各行高度值组成的一个向量\n#精确地控制每幅图形的大小\nattach(mtcars)\nopar <- par(no.readonly = TRUE)\n#par(mfrow=c(3,1))\nlayout(matrix(c(1,1,2,3),2,2,byrow = TRUE))\nhist(wt)\nhist(mpg)\nhist(disp)\npar(opar)\ndetach(mtcars)\n\n#多幅图形布局的精细控制\nopar <- par(no.readonly = TRUE)\npar(flg=c(0,0.8,0,0.8))#设置散点图\nplot(mtcars$wt,mtcars$mpg,xlab = \"Miles per Gallon\",ylab = \"Car Weight\")\npar(fig=c(0,0.8,0.55,1),new=TRUE)\nboxplot(mtcars$wt,horizontal = TRUE,axes=FALSE)\npar(fig=c(0.65,1,0,0.8),new=TRUE)\nboxplot(mtcars$wt,axes=FALSE)\nmtext(\"Enhanced Scatterplot\",side = 3,outer = TRUE,line = -3)\npar(opar)\n\n\n\n\n\n\n\n",
+    "created" : 1489580457526.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "197236010",
+    "id" : "B878396E",
+    "lastKnownWriteTime" : 1489636883,
+    "last_content_update" : 1489636883765,
+    "path" : "~/Public/02-R/01-Projects/Study20170315/R实战.R",
+    "project_path" : "R实战.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

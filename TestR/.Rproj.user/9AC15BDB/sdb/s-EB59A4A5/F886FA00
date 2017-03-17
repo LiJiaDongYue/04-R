@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Generic Function\nh <- list(a=rnorm(3),b=\"This shouldn't print\")\nclass(h) <- \"myclass\"\nprint.myclass <- function(x){cat(\"A is\",x$a,\"\\n\")}\nprint(h)\n\n# own Generic\nxpos.xypoint <- function(x) x$x\nxpos.rthetapoint <- function(x) x$r*cos(x$theta)\n\nx <- seq(0,4,length=100)\ny <- sqrt(x)\nplot(y^x,type = \"l\",lwd=3,main = expression(y==sqrt(x)))\n\n#测试运行时间，将函数放在system.time()内，返回运行时间\nsystem.time(\n  for(i in 1:100)\n    mad(runif(1000))\n)",
+    "created" : 1488870589461.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "685333449",
+    "id" : "F886FA00",
+    "lastKnownWriteTime" : 70125816,
+    "last_content_update" : 1488874614828,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

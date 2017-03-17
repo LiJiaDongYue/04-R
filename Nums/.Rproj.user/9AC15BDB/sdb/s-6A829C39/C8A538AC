@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n#储存数据，尤其是字符型数据，有时候不会储存完整的内容\n#可能会用一个字符代替整个内容，这样会使存储的体积更小，\n#那么我们在使用时候需要将数据完整的表达出来\nlibrary(\"bitops\")\nlibrary(\"RCurl\")\n\n# 输入数据\n#url = \"https://raw.githubusercontent.com/chrisestevez/MSDA-Bridge/master/mushroom.csv\"\n#Rdata = getURL(url)\n#完整的将数据导入到了内存中\nMyData = read.csv(text = \"mushroom.csv\",header = FALSE,sep=\",\")\nMyFinalData = data.frame(MyData)\nsamp = head(MyFinalData, n = 10)\n\nsamp = subset(samp, select = c(V1,V3,V5,V9))\ncolnames(samp) = c(\"MushroomType\",\"CapSurface\",\"Bruises\",\"GillSize\")\n\n# 替换数据\nsamp$MushroomType = c('p'=\"poisonous\",'e'=\"edible\")[ as.character(samp$MushroomType)]\nsamp$CapSurface = c('f'=\"fibrous\",'g'=\"grooves\",y='scaly','s'=\"smooth\")[ as.character(samp$CapSurface)]\nsamp$Bruises = c('t'=\"bruises\",'f'=\"no\")[ as.character(samp$Bruises)]\nsamp$GillSize = c('b'=\"broad\",'n'=\"narrow\")[ as.character(samp$GillSize)]",
+    "created" : 1488547226761.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1120245795",
+    "id" : "C8A538AC",
+    "lastKnownWriteTime" : 1488549884,
+    "last_content_update" : 1488549884229,
+    "path" : "~/Public/02-R/01-Projects/Nums/SaveData.R",
+    "project_path" : "SaveData.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
