@@ -1,0 +1,23 @@
+#常用的数学函数
+ abs sqrt ceiling floor  trunc 截取x中的整数部分
+round singif 舍入有效位数 三角函数（sin/asin cos/acos tan/atan） log log10 exp指数函数
+统计函数
+mean median sd var mad绝对中位差 quantile(x,probs)求分位数  range值域 diff(x,lag=n)滞后差分 数差
+scale(x,center=TRUE,scale=TRUE) 为数据对象x按列进行中心化（center=TRUE）或标准化（center=TRUE,scale=TRUE）
+
+数据标准化 为什么？
+默认情况下，函数scale()对矩阵或数据框的指定列进行均值为0、标准差为1的标准化：scale(mydata)
+任意标准化 scale(mydata)*SD（标准差） +M(均值)
+
+概率函数
+d = 密度函数（density）
+p = 分布函数（distribution function）
+q = 分位数函数（quantile function）
+r = 生成随机数（随机偏差）
+
+
+-->设定随机数种子为了是结果重现
+
+
+
+

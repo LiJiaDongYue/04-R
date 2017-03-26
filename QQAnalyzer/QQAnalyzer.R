@@ -1,7 +1,8 @@
 #分析QQ群聊天记录
 
 #1.读取数据 此方法读取很慢
-#file_data<-readLines(file.choose(),encoding = "UTF-8")
+#相对路径
+file_data<-readLines("ThinkPHP.txt",encoding = "UTF-8")
 
 #2.定义数据框和变量
 data <- data.frame(user_name = c(), datetime = c(), text = c())
