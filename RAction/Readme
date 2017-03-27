@@ -1,3 +1,14 @@
+
+第一部分 第四章基础数据管理
+ 基本运算符 幂**/^ 求余 %% 整除%/%
+ 变量重命名 fix reshape rename names
+ is.na
+ 使用na.omit()删除不完整的观测
+ 数据集的合并 merge rbind/cbind
+ 删除列：%in%、！ - ->NULL
+ 选入观测which subset(select)
+
+第一部分 第五章高级数据管理
 #常用的数学函数
  abs sqrt ceiling floor  trunc 截取x中的整数部分
 round singif 舍入有效位数 三角函数（sin/asin cos/acos tan/atan） log log10 exp指数函数
@@ -15,8 +26,48 @@ p = 分布函数（distribution function）
 q = 分位数函数（quantile function）
 r = 生成随机数（随机偏差）
 
+常用的概率分布
+Beta分布 beta  Logistic分布 logistic
+二项分布 binom 多项分布 multinom
+
 
 -->设定随机数种子为了是结果重现
+-->生成多元正态数据 mvrnorm(n,mean,singma)
+
+字符处理函数
+nchar(x) 计算x中的字符数量
+substr(x,start,stop) 提取或者替换一个字符向量中字串
+grep(pattern,x,ignore,case=F,fixed=F) 在x中搜索某种模式
+sub     在x中搜索pattern，并以文本replacement将其替换。若fixed=FALSE，则pattern为一个正则表达式。若fixed=TRUE，则pattern为一个文本字符串
+strsplit paste toupper tolower
+
+其它函数
+cut(x, n) 将连续型变量x分割为有着n个水平的因子
+pretty(x, n) 创建美观的分割点。通过选取n+1个等间距的取整值，将一个连续型变量x分割为n个区间。绘图中常用
+cat(. .., file ="myfile",append =FALSE)连接...中的对象，并将其输出到屏幕上或文件中（如果声明了一个的话）
+
+控制流
+在处理大数据集中的行和列时， R中的循环可能比较低效费时。只要可能，最好联用R中的
+内建数值/字符处理函数和apply族函数。
+
+数据整合与重构
+  转置 t() /reshape package
+  整合 aggregate(x,by,FUN)
+  其中x是待折叠的数据对象， by是一个变量名组成的列表，这些变量将被去掉以形成新的观测，
+而FUN则是用来计算描述性统计量的标量函数，它将被用来计算新观测中的值
+ 
+本章学习难点：
+1.对数学函数需要多加了解
+2.正则表达式处理
+3.reshape包对数据的整合
+
+第二部分第六章基本图形
+1.注意，我们并不需要使用vcd包来创建条形图。我们读入它的原因是为了使用Arthritis数
+据集
+2.条形图并不一定要基于计数数据或频率数据。你可以使用数据整合函数并将结果传递给
+barplot()函数，来创建表示均值、中位数、标准差等的条形图
+3.棘状图对堆砌条形图进行了重缩放，这样每个条形的高度均为1，每一段的高度即
+表示比例
 
 
 
