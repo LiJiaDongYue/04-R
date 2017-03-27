@@ -51,9 +51,11 @@ par(mfrow=c(2,2))
 hist(mtcars$mpg)
 #制定组数和颜色
 hist(mtcars$mpg,freq = FALSE,breaks = 12,col = "red")
+#添加轴须图
+hist(mtcars$mpg,freq = FALSE,breaks = 12,col = "red")
 rug(jitter(mtcars$mpg))
 lines(density(mtcars$mpg),col="blue",lwd=2)
-
+#添加正态密度曲线和外框
 x <- mtcars$mpg
 h <- hist(x,breaks = 12,col = "red")
 xfit <- seq(min(x),max(x),length=40)
@@ -61,6 +63,31 @@ yfit <- dnorm(xfit,mean = mean(x),sd = sd(x))
 yfit <- yfit*diff(h$mids[1:2])*length(x)
 lines(xfit,yfit,col="blue",lwd=2)
 box()
+
+#核密度图
+par(mfrow=c(2,1))
+d <- density(mtcars$mpg)
+plot(d)
+
+plot(d,main = "Kerel")
+polygon(d,col="red",border="blue")
+rug(mtcars$mpg,col="brown")
+
+#可比较的核密度图
+par(lwd=2)
+library(sm)
+attach(mtcars)
+#创建分组因子
+cyl.f <- factor(cyl,levels = c(4,6,8),labels = c("4c","6c","8c"))
+#通过鼠标单击添加图例
+colfill <- c(2:(1+length(levels(cyl.f))))
+legend(locator(1),levels(cyl.f),fill = colfill)
+detach(mtcars)
+
+
+
+
+
 
 
 
