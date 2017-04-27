@@ -6,18 +6,18 @@ library(plyr)
 library(wordcloud2)
 
 # 读入评论数据
-evaluation <- read_excel('Emotion/comment.xlsx')
+evaluation <- read_excel('Emotion/comment.xlsx') # file.choose()
 head(evaluation)
 str(evaluation)
 
 # 读入正负面词库及停止词
-pos <- readLines(file.choose(), encoding = 'UTF-8')
-neg <- readLines(file.choose(), encoding = 'UTF-8')
-stopwords <- readLines(file.choose(), encoding = 'UTF-8')
+pos <- readLines('Emotion/positive.txt', encoding = 'UTF-8')
+neg <- readLines('Emotion/negative.txt', encoding = 'UTF-8')
+stopwords <- readLines('Emotion/mystopwords.txt', encoding = 'UTF-8')
 
 # 合并情感词库
 mydict <- c(pos, neg)
-
+head(mydict)
 # 为jieba分词准备工作引擎
 engine <- worker()
 #往jieba分词引擎中添加自定义词汇，目的是能够将一些词正常的切开
